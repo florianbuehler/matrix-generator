@@ -1,11 +1,13 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { theme } from 'styles';
+import { GlobalStyle, theme } from 'styles';
+import { Matrix } from 'components';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <h1>hello world</h1>
+      <GlobalStyle />
+      <Matrix />
     </ThemeProvider>
   );
 }

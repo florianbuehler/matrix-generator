@@ -1,3 +1,5 @@
+https://betterprogramming.pub/how-to-create-the-matrix-text-effect-with-javascript-325c6bb7d96e
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { useMatrixSettings } from 'hooks';
 
 type Column = {
   x: number;
@@ -14,7 +15,6 @@ const StyledCanvas = styled.canvas`
   z-index: -1;
 
   display: block;
-  background: black;
 `;
 
 const getNewColumns = (maxStackHeight: number) => {
@@ -34,6 +34,8 @@ const getNewColumns = (maxStackHeight: number) => {
 };
 
 const Matrix: React.FC = () => {
+  const { color, backgroundColor } = useMatrixSettings();
+
   const [columns, setColumns] = useState(getNewColumns(Math.ceil(window.innerHeight / 20)));
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -72,7 +74,7 @@ const Matrix: React.FC = () => {
 
       // pick a font slightly smaller than the tile size
       ctx.font = 20 - 2 + 'px monospace';
-      ctx.fillStyle = 'rgb( 0 , 255 , 0 )';
+      ctx.fillStyle = color;
 
       for (let i = 0; i < columns.length; ++i) {
         // pick a random ascii character (change the 94 to a higher number to include more characters)
@@ -82,7 +84,7 @@ const Matrix: React.FC = () => {
     };
 
     draw();
-  }, [columns]);
+  }, [color, columns]);
 
   useEffect(() => {
     const maxStackHeight = Math.ceil(window.innerHeight / 20);
@@ -121,7 +123,7 @@ const Matrix: React.FC = () => {
     canvas.height = window.innerHeight;
   };
 
-  return <StyledCanvas ref={canvasRef} />;
+  return <StyledCanvas style={{ backgroundColor }} ref={canvasRef} />;
 };
 
 export default Matrix;

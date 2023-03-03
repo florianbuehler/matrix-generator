@@ -1,48 +1,66 @@
-https://betterprogramming.pub/how-to-create-the-matrix-text-effect-with-javascript-325c6bb7d96e
+<h1 align="center">
+  Matrix Generator
+</h1>
 
-# Getting Started with Create React App
+<p align="center">
+    <a style="text-decoration: none" href="https://reactjs.org/" alt="React">
+        <img src="https://img.shields.io/badge/framework-React-61dbfb" /></a>
+    <a style="text-decoration: none" href="https://www.typescriptlang.org/" alt="TypeScript">
+        <img src="https://img.shields.io/badge/language-TypeScript-3178c6" /></a>
+    <a style="text-decoration: none" href="https://styled-components.com/" alt="Styled Components">
+        <img src="https://img.shields.io/badge/styling-Styled_Components-dd6f93" /></a>
+    <a style="text-decoration: none" href="https://eslint.org/" alt="Eslint">
+        <img src="https://img.shields.io/badge/linter-ESLint-4a31c3" /></a>
+    <a style="text-decoration: none" href="https://prettier.io/" alt="Prettier">
+        <img src="https://img.shields.io/badge/code_style-Prettier-ff69b4" /></a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A generator to create a custom version of the famous effect from the Matrix movies.
 
-## Available Scripts
 
-In the project directory, you can run:
+## 🚀 Getting started
 
-### `npm start`
+If you want to play around with the code yourself - feel free to do so 🧑🏻‍💻. First clone the project using
+```shell script
+git clone https://github.com/florianbuehler/matrix-generator.git
+```
+(or alternatively using SSH and `git@github.com:florianbuehler/matrix-generator.git`) and then navigate into the root folder of the project and run
+```shell script
+npm install
+```
+to install the required packages into the `node_modules` folder.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🔧 Development
 
-### `npm test`
+Start the development server with hot reload configured with
+```shell script
+npm run dev
+```
+and then navigate to `http://localhost:3000` in your browser to view the latest changes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To help ensuring some basic formatting and code quality standards, the project has prettier and eslint configured. That's why you can simply use
+```shell script
+npm run eslint
+```
+to see if the code matches the standards and run
+```shell script
+npm run fix-eslint
+```
+to let eslint fix it automatically where possible.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💫 Deployment
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Build an optimized and production ready version of the project with
+```shell script
+npm run build
+```
+The production build is located in the *./build* directory and can be served with a static file server. E.g. by running
+```shell script
+serve -s build
+```
+**Note:** To be able to use `serve` it must be installed on your machine. If you haven't done so yet, you can install it with
+```shell script
+npm install -g serve
+```

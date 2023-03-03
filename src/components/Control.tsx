@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { ColorPicker, Header } from 'components';
 import { useMatrixSettings } from 'hooks';
+import Footer from './Footer';
 
 const StyledControl = styled.div`
   position: absolute;
@@ -37,6 +38,7 @@ const Control: React.FC = () => {
           </div>
         </StyledForm>
       </main>
+      <Footer />
     </StyledControl>
   );
 };

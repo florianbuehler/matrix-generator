@@ -25,14 +25,20 @@ const StyledColorPicker = styled.div`
 const StyledColorDisplay = styled.div`
   width: 100%;
   height: 40px;
-  border: 2px #52525b solid;
+  border: 2px solid #52525b;
   border-radius: 6px;
 
   &:hover {
     cursor: pointer;
   }
 
-  > input {
+  > div {
+    width: 100%;
+    border: ${({ theme }) => `2px solid ${theme.background}`};
+    border-radius: 5px;
+  }
+
+  input {
     width: 100%;
     height: 100%;
     color-scheme: dark;
@@ -58,8 +64,10 @@ const ColorPicker: React.FC<Props> = ({ label, color, onColorChange }) => {
         <label htmlFor={id}>{label}</label>
         <span>{color}</span>
       </div>
-      <StyledColorDisplay style={{ backgroundColor: color }}>
-        <input id={id} type="color" value={color} onChange={handleColorChange} />
+      <StyledColorDisplay>
+        <div style={{ backgroundColor: color }}>
+          <input id={id} type="color" value={color} onChange={handleColorChange} />
+        </div>
       </StyledColorDisplay>
     </StyledColorPicker>
   );

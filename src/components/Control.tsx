@@ -8,18 +8,18 @@ const StyledControl = styled.div`
   top: 1.5rem;
   right: 1.5rem;
 
-  //background: #171717;
   background: ${({ theme }) => theme.background};
+  border-radius: 8px;
   opacity: 0.9;
   padding: 1.75rem 1.75rem 1.75rem 1.75rem;
 
-  width: 25rem;
+  width: 27.5rem;
 `;
 
 const StyledForm = styled.form`
   .form-row {
     display: flex;
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 `;
 

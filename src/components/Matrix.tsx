@@ -59,7 +59,7 @@ const Matrix: React.FC = () => {
 
   useEffect(() => {
     const draw = () => {
-      const fadeFactor = 0.05;
+      const fadeFactor = '0D';
       const canvas = canvasRef.current;
 
       if (!canvas) {
@@ -68,8 +68,8 @@ const Matrix: React.FC = () => {
 
       const ctx = canvas.getContext('2d')!;
 
-      // draw a semi transparent black rectangle on top of the scene to slowly fade older characters
-      ctx.fillStyle = 'rgba( 0 , 0 , 0 , ' + fadeFactor + ' )';
+      // draw a semi transparent rectangle on top of the scene to slowly fade older characters
+      ctx.fillStyle = `${backgroundColor}${fadeFactor}`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // pick a font slightly smaller than the tile size
@@ -84,7 +84,7 @@ const Matrix: React.FC = () => {
     };
 
     draw();
-  }, [color, columns]);
+  }, [color, backgroundColor, columns]);
 
   useEffect(() => {
     const maxStackHeight = Math.ceil(window.innerHeight / 20);

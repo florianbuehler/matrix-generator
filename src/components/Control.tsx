@@ -48,7 +48,7 @@ const Control: React.FC = () => {
             label="Fade Factor:"
             value={fadeFactor}
             onChange={(event) => changeFadeFactor(+event.target.value)}
-            min={0.01}
+            min={0}
             max={1}
             step={0.01}
           />

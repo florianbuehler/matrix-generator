@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { useMatrixSettings } from 'hooks';
+import { toHex } from 'utils';
 
 type Column = {
   x: number;
@@ -34,7 +35,7 @@ const getNewColumns = (maxStackHeight: number) => {
 };
 
 const Matrix: React.FC = () => {
-  const { color, backgroundColor } = useMatrixSettings();
+  const { color, backgroundColor, fadeFactor } = useMatrixSettings();
 
   const [columns, setColumns] = useState(getNewColumns(Math.ceil(window.innerHeight / 20)));
 
@@ -59,7 +60,6 @@ const Matrix: React.FC = () => {
 
   useEffect(() => {
     const draw = () => {
-      const fadeFactor = '0D';
       const canvas = canvasRef.current;
 
       if (!canvas) {
@@ -69,7 +69,9 @@ const Matrix: React.FC = () => {
       const ctx = canvas.getContext('2d')!;
 
       // draw a semi transparent rectangle on top of the scene to slowly fade older characters
-      ctx.fillStyle = `${backgroundColor}${fadeFactor}`;
+      const fillStyle = `${backgroundColor}${toHex(fadeFactor * 255)}`;
+      console.log({ fillStyle });
+      ctx.fillStyle = fillStyle;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // pick a font slightly smaller than the tile size
@@ -84,7 +86,7 @@ const Matrix: React.FC = () => {
     };
 
     draw();
-  }, [color, backgroundColor, columns]);
+  }, [color, backgroundColor, fadeFactor, columns]);
 
   useEffect(() => {
     const maxStackHeight = Math.ceil(window.innerHeight / 20);

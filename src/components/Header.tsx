@@ -5,7 +5,7 @@ const StyledHeader = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.75rem;
 
   h1 {
     margin: 0 0 0.5rem 0;

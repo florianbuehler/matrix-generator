@@ -13,8 +13,8 @@ const StyledFooter = styled.footer<StyledProps>`
   justify-content: center;
   gap: 0.75rem;
 
-  margin-top: 2rem;
-  color: ${({ theme }) => theme.typography.colors.text};
+  margin-top: 2.5rem;
+  color: ${({ theme }) => theme.typography.colors.additionalInfo};
   font-size: 14px;
 
   a {

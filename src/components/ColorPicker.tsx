@@ -1,16 +1,13 @@
-import React, { ChangeEvent, useId } from 'react';
+import React, { useId } from 'react';
 import styled from 'styled-components';
 
 type Props = {
   label: string;
-  color: string;
-  onColorChange: (color: string) => void;
-};
+} & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 
 const StyledColorPicker = styled.div`
   display: flex;
   flex-direction: column;
-  color: ${({ theme }) => theme.typography.colors.text};
 
   width: 100%;
 
@@ -18,7 +15,16 @@ const StyledColorPicker = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  label {
+    font-weight: 500;
+    color: ${({ theme }) => theme.typography.colors.text};
+  }
+
+  span {
+    color: ${({ theme }) => theme.typography.colors.additionalInfo};
   }
 `;
 
@@ -27,10 +33,7 @@ const StyledColorDisplay = styled.div`
   height: 40px;
   border: 2px solid #52525b;
   border-radius: 6px;
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 
   > div {
     width: 100%;
@@ -42,31 +45,27 @@ const StyledColorDisplay = styled.div`
     width: 100%;
     height: 100%;
     color-scheme: dark;
+    cursor: pointer;
 
     opacity: 0;
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 `;
 
-const ColorPicker: React.FC<Props> = ({ label, color, onColorChange }) => {
-  const id = useId();
+const ColorPicker: React.FC<Props> = ({ label, id: providedId, value, ...delegated }) => {
+  const generatedId = useId();
+  const id = providedId || generatedId;
 
-  const handleColorChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onColorChange(event.target.value);
-  };
+  const backgroundColor = typeof value === 'string' ? value : '#000000';
 
   return (
     <StyledColorPicker>
       <div>
         <label htmlFor={id}>{label}</label>
-        <span>{color}</span>
+        <span>{value}</span>
       </div>
       <StyledColorDisplay>
-        <div style={{ backgroundColor: color }}>
-          <input id={id} type="color" value={color} onChange={handleColorChange} />
+        <div style={{ backgroundColor: backgroundColor }}>
+          <input {...delegated} id={id} type="color" value={value} />
         </div>
       </StyledColorDisplay>
     </StyledColorPicker>

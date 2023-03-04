@@ -5,7 +5,9 @@ const MatrixSettingsContext = createContext<MatrixSettings>({
   color: 'rgb(0 , 255 , 0)',
   changeColor: () => undefined,
   backgroundColor: 'rgb(0, 0, 0)',
-  changeBackgroundColor: () => undefined
+  changeBackgroundColor: () => undefined,
+  fadeFactor: 0.05,
+  changeFadeFactor: () => undefined
 });
 
 export default MatrixSettingsContext;

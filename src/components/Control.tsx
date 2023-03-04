@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ColorPicker, Header } from 'components';
+import { ColorPicker, Footer, Header, RangeSlider } from 'components';
 import { useMatrixSettings } from 'hooks';
-import Footer from './Footer';
 
 const StyledControl = styled.div`
   position: absolute;
@@ -18,6 +17,10 @@ const StyledControl = styled.div`
 `;
 
 const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   .form-row {
     display: flex;
     gap: 1.5rem;
@@ -25,17 +28,30 @@ const StyledForm = styled.form`
 `;
 
 const Control: React.FC = () => {
-  const { color, changeColor, backgroundColor, changeBackgroundColor } = useMatrixSettings();
+  const { color, changeColor, backgroundColor, changeBackgroundColor, fadeFactor, changeFadeFactor } =
+    useMatrixSettings();
 
   return (
     <StyledControl>
       <Header />
       <main>
         <StyledForm>
-          <div className="form-row">
-            <ColorPicker label="Color:" color={color} onColorChange={changeColor} />
-            <ColorPicker label="Background:" color={backgroundColor} onColorChange={changeBackgroundColor} />
+          <div className="form-row" onSubmit={(e) => e.preventDefault()}>
+            <ColorPicker label="Color:" value={color} onChange={(event) => changeColor(event.target.value)} />
+            <ColorPicker
+              label="Background:"
+              value={backgroundColor}
+              onChange={(event) => changeBackgroundColor(event.target.value)}
+            />
           </div>
+          <RangeSlider
+            label="Fade Factor:"
+            value={fadeFactor}
+            onChange={(event) => changeFadeFactor(+event.target.value)}
+            min={0.01}
+            max={1}
+            step={0.01}
+          />
         </StyledForm>
       </main>
       <Footer />

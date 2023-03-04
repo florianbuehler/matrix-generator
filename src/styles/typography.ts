@@ -1,7 +1,8 @@
 export type Typography = {
   colors: {
-    text: string;
     header: string;
+    text: string;
+    additionalInfo: string;
     icon: string;
   };
 };
@@ -9,7 +10,8 @@ export type Typography = {
 const typography: Typography = {
   colors: {
     header: '#d4d4d8', // tailwind zinc-300
-    text: '#a1a1aa', // tailwind zinc-400
+    text: '#d4d4d8', // tailwind zinc-300
+    additionalInfo: '#a1a1aa', // tailwind zinc-400
     icon: '#71717a' // tailwind zinc-500
   }
 };

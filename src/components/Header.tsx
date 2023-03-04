@@ -15,7 +15,7 @@ const StyledHeader = styled.header`
 
   p {
     margin: 0;
-    color: ${({ theme }) => theme.typography.colors.text};
+    color: ${({ theme }) => theme.typography.colors.additionalInfo};
   }
 `;
 

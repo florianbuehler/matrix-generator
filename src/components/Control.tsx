@@ -19,7 +19,7 @@ const StyledControl = styled.div`
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.75rem;
 
   .form-row {
     display: flex;
@@ -28,8 +28,16 @@ const StyledForm = styled.form`
 `;
 
 const Control: React.FC = () => {
-  const { color, changeColor, backgroundColor, changeBackgroundColor, fadeFactor, changeFadeFactor } =
-    useMatrixSettings();
+  const {
+    color,
+    changeColor,
+    backgroundColor,
+    changeBackgroundColor,
+    velocity,
+    changeVelocity,
+    fadeFactor,
+    changeFadeFactor
+  } = useMatrixSettings();
 
   return (
     <StyledControl>
@@ -44,6 +52,15 @@ const Control: React.FC = () => {
               onChange={(event) => changeBackgroundColor(event.target.value)}
             />
           </div>
+          <RangeSlider
+            label="Velocity:"
+            unit="ms"
+            value={velocity}
+            onChange={(event) => changeVelocity(+event.target.value)}
+            min={0}
+            max={250}
+            step={1}
+          />
           <RangeSlider
             label="Fade Factor:"
             value={fadeFactor}

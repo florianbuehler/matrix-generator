@@ -10,13 +10,13 @@ const StyledColorPicker = styled.div`
   flex-direction: column;
 
   width: 100%;
+`;
 
-  > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
-  }
+const StyledLabel = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
 
   label {
     font-weight: 500;
@@ -29,6 +29,7 @@ const StyledColorPicker = styled.div`
 `;
 
 const StyledColorDisplay = styled.div`
+  display: flex;
   width: 100%;
   height: 40px;
   border: 2px solid #52525b;
@@ -59,10 +60,10 @@ const ColorPicker: React.FC<Props> = ({ label, id: providedId, value, ...delegat
 
   return (
     <StyledColorPicker>
-      <div>
+      <StyledLabel>
         <label htmlFor={id}>{label}</label>
         <span>{value}</span>
-      </div>
+      </StyledLabel>
       <StyledColorDisplay>
         <div style={{ backgroundColor: backgroundColor }}>
           <input {...delegated} id={id} type="color" value={value} />

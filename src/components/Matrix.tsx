@@ -35,7 +35,7 @@ const getNewColumns = (maxStackHeight: number) => {
 };
 
 const Matrix: React.FC = () => {
-  const { color, backgroundColor, fadeFactor } = useMatrixSettings();
+  const { color, backgroundColor, velocity, fadeFactor } = useMatrixSettings();
 
   const [columns, setColumns] = useState(getNewColumns(Math.ceil(window.innerHeight / 20)));
 
@@ -69,9 +69,7 @@ const Matrix: React.FC = () => {
       const ctx = canvas.getContext('2d')!;
 
       // draw a semi transparent rectangle on top of the scene to slowly fade older characters
-      const fillStyle = `${backgroundColor}${toHex(fadeFactor * 255)}`;
-      console.log({ fillStyle });
-      ctx.fillStyle = fillStyle;
+      ctx.fillStyle = `${backgroundColor}${toHex(fadeFactor * 255)}`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // pick a font slightly smaller than the tile size
@@ -107,12 +105,12 @@ const Matrix: React.FC = () => {
       return nextColumn;
     });
 
-    const timeoutId = window.setTimeout(() => setColumns(nextColumns), 50);
+    const timeoutId = window.setTimeout(() => setColumns(nextColumns), velocity);
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [columns]);
+  }, [columns, velocity]);
 
   const setCanvasSize = () => {
     const canvas = canvasRef.current;

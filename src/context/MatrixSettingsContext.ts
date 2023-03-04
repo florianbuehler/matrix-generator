@@ -6,6 +6,8 @@ const MatrixSettingsContext = createContext<MatrixSettings>({
   changeColor: () => undefined,
   backgroundColor: 'rgb(0, 0, 0)',
   changeBackgroundColor: () => undefined,
+  velocity: 50,
+  changeVelocity: () => undefined,
   fadeFactor: 0.05,
   changeFadeFactor: () => undefined
 });

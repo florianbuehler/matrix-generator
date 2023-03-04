@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 type Props = {
   label: string;
+  unit?: string;
 } & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 
 const StyledRangeSlider = styled.div`
@@ -11,22 +12,7 @@ const StyledRangeSlider = styled.div`
   color: ${({ theme }) => theme.typography.colors.text};
 
   width: 100%;
-
-  > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-  }
-
-  label {
-    font-weight: 500;
-    color: ${({ theme }) => theme.typography.colors.text};
-  }
-
-  span {
-    color: ${({ theme }) => theme.typography.colors.additionalInfo};
-  }
+  padding-bottom: 0.25rem;
 
   input {
     appearance: none;
@@ -45,16 +31,34 @@ const StyledRangeSlider = styled.div`
   }
 `;
 
-const RangeSlider: React.FC<Props> = ({ label, id: providedId, value, ...delegated }) => {
+const StyledLabel = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+
+  label {
+    font-weight: 500;
+    color: ${({ theme }) => theme.typography.colors.text};
+  }
+
+  span {
+    color: ${({ theme }) => theme.typography.colors.additionalInfo};
+  }
+`;
+
+const RangeSlider: React.FC<Props> = ({ label, unit, id: providedId, value, ...delegated }) => {
   const generatedId = useId();
   const id = providedId || generatedId;
 
   return (
     <StyledRangeSlider>
-      <div>
+      <StyledLabel>
         <label htmlFor={id}>{label}</label>
-        <span>{value}</span>
-      </div>
+        <span>
+          {value} {unit}
+        </span>
+      </StyledLabel>
       <input {...delegated} type="range" id={id} value={value} />
     </StyledRangeSlider>
   );
